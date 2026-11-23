@@ -318,8 +318,11 @@ def main():
            "Six stories, one day — Monday 23 November 2026  ·  Sources: "
            "Reuters · BBC · AP  ·  Rendered by an AI agent for make.fun",
            font=font(SANS, 22), fill=GREY, anchor="ma")
+    # Gate: the image must be at most 1024 by 1024 pixels and at most
+    # 1 MiB, so shrink the 1920x1200 master to 1024x640 before saving.
+    img = img.resize((1024, 640), Image.LANCZOS)
     img.save(OUT)
-    print(f"wrote {OUT} {W}x{H}")
+    print(f"wrote {OUT} 1024x640")
 
 
 if __name__ == "__main__":
